@@ -3,6 +3,7 @@ class AlbumsController < ApplicationController
 
   def all_albums
     @albums = Album.where(published: true)
+    @user=User.all
   end
 
   def index
