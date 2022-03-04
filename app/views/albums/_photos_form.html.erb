@@ -1,0 +1,10 @@
+<h2>Add more Photos</h2>
+<%=form_with model: @album do |form|%>
+<div>
+  <%=form.label :photos%> 
+  <%=form.file_field:photos,class:'form-control',:multiple => true%>
+</div>
+<br />
+<div><%=form.submit%></div>
+<%end%>
+<br />

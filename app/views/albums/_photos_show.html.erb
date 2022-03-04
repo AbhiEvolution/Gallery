@@ -1,0 +1,20 @@
+<h1>Photos</h1>
+<div class="row">
+  <%@album.photos.each do |image|%>
+  <div class="col-md-3">
+    <div class="card">
+      <div class="card-header">
+        <%= link_to image do %>
+        <i class="fas fa-expand-wide green"></i>
+        <%end %> 
+        <%= link_to delete_image_albums_path(id: image.id),method: :delete, data: { confirm: "Are you sure?" } do %>
+        <i class="fas fa-times right"></i>
+        <%end%>
+      </div>
+      <div class="card-body">
+        <%= image_tag(image,class:"card-top-img img-fluid") %>
+      </div>
+    </div>
+  </div>
+  <%end%>
+</div>

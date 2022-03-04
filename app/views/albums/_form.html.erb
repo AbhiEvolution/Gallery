@@ -1,0 +1,39 @@
+<%=form_with model: album do |form|%> 
+<% if album.errors.full_messages.any? %>
+<% album.errors.full_messages.each do |error_message| %> 
+<%= error_message if album.errors.full_messages.first == error_message %> <br />
+<% end %> 
+<% end %>
+<div>
+  <%=form.label :title%> <%=form.text_field :title,class:'form-control'%>
+</div>
+<br />
+<div>
+  <%=form.label :cover_photo%> 
+  <%=form.file_field:cover_photo,class:'form-control'%>
+</div>
+<br />
+<div>
+  <%=form.label :description%> 
+  <%=form.text_area:description,class:'form-control'%>
+</div>
+<br />
+<div>
+  <%=form.label :tag %> 
+  <%=form.text_area :all_tags,class:'form-control' %>
+</div>
+<br />
+<div>
+  <%=form.label :photos%> 
+  <%=form.file_field:photos,class:'form-control',:multiple => true%>
+</div>
+<br />
+<div>
+  <%=form.label :published%> 
+  <%=form.check_box :published%>
+</div>
+<br />
+<div><%=form.submit%></div>
+
+<%end%>
+<br />

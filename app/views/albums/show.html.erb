@@ -1,0 +1,61 @@
+<h1>Album</h1>
+<p id="notice"><%= notice%></p>
+<div class="col-md-12">
+  <div class="card">
+    <div class="card-body">
+      <% if @album.cover_photo.attached? %>
+        <%=image_tag(@album.cover_photo,class: "card-top-img img-fluid") %>
+      <%end%>
+    </div>
+    <div class="card-footer">
+      <strong>Title:</strong>
+      <%=@album.title%>
+    </div>
+    <div class="card-footer">
+      <strong>Description:</strong>
+      <%=@album.description%>
+    </div>
+    <div class="card-footer">
+      <strong>Tag:</strong>
+      <%=@album.all_tags%>
+    </div>
+  </div>
+</div>
+<%=render 'photos_show'%>
+<div class="text-center my-4">
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Add Photos
+</button>
+ <span class="mx-3"><%= link_to "Back", root_path,class: "btn btn-secondary"%></span>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Photos</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%=form_with model: @album do |form|%>
+          <% if @album.errors.full_messages.any? %>
+            <% @album.errors.full_messages.each do |error_message| %>
+              <%= error_message if @album.errors.full_messages.first == error_message %> <br />
+            <% end %>
+          <% end %>
+          <div>
+            <%=form.label :photos%>
+            <%=form.file_field:photos,class:'form-control',:multiple => true%>
+          </div>
+          <br />
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <%= form.submit "Add Photos", type: "submit", :class=> "btn btn-primary" %>
+        <%end%>
+      </div>
+    </div>
+  </div>
+</div>
+

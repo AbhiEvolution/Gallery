@@ -1,0 +1,32 @@
+<%=render 'home/search'%>
+<h1>All Published Albums</h1>
+<div class="container-fluid">
+  <div class="row">
+  
+    <% @albums.each do |album| %>
+      <% if album.published? %>
+        <div class="col-md-4 col-sm-12">
+          <div class="card">
+            
+            <div class="card-body">
+              <%= link_to  home_path(id: album.id),class:"link" do%>
+                <% if album.cover_photo.attached? %>
+                  <%= image_tag(album.cover_photo,class: "card-top-img img-fluid") %>
+                <% end %>
+              <%end%>
+            </div>
+            <div class="card-footer text-center"><%= album.title %></div>
+            <div class="card-footer">
+              <strong>Tags:</strong>
+              <%=album.all_tags %>
+            </div>
+            <div class="card-footer">
+              <strong>Total Photos:</strong>
+              <%=album.photos.count%>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
