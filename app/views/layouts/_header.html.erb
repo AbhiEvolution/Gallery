@@ -1,9 +1,4 @@
 <div class="container-fluid bg-dark shadow-lg p-3 mb-5 bg-body rounded fixed-top">
-  <% if notice %>
-    <p class="alert alert-success alert-dismissible fade show" role="alert"><%= notice %></p>
-  <% end %> <% if alert %>
-    <p class="alert alert-danger alert-dismissible fade show" role="alert"><%= alert %></p>
-  <% end %>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="/">
@@ -56,4 +51,11 @@
       </div>
     </div>
   </nav>
+  <div class="container-fluid alt">
+  <% if notice %>
+    <p class="alert alert-success alert-dismissible fade show" role="alert"><%= notice %></p>
+  <% end %> <% if alert %>
+    <p class="alert alert-danger alert-dismissible fade show" role="alert"><%= alert %></p>
+  <% end %>
+  </div>
 </div>

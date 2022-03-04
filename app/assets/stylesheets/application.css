@@ -13,67 +13,77 @@
  *= require_tree .
  *= require_self
  */
+
 body {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
+
 h1,
 h2 {
-  text-align: center;
-  border-bottom: 0.5vmin solid black;
+    text-align: center;
+    border-bottom: 0.5vmin solid black;
 }
+
 i {
-  color: gray;
-  font-size: 30px;
-  padding-left: 2vmin;
+    color: gray;
+    font-size: 30px;
+    padding-left: 2vmin;
 }
+
 .green {
-  color: green;
+    color: green;
 }
+
 .right {
-  float: right;
-  color: red;
+    float: right;
+    color: red;
 }
 
 .col-md-4 {
-  margin-top: 2vmin;
+    margin-top: 2vmin;
 }
+
 .col-md-4 .card-body img {
-  height: 30vmin;
-  width: 100%;
+    height: 30vmin;
+    width: 100%;
 }
+
 .col-md-3 {
-  margin-top: 2vmin;
+    margin-top: 2vmin;
 }
+
 .col-md-3 .card-body img {
-  height: 25vmin;
-  width: 100%;
+    height: 25vmin;
+    width: 100%;
 }
 
 @media (min-width: 280px) and (max-width: 653px) {
-  .col-md-4 {
-    margin-top: 2vmin;
-  }
-  .col-md-4 .card-body img {
-    height: 60vmin;
-  }
-  .col-md-3 {
-    margin-top: 2vmin;
-  }
-  .col-md-3 .card-body img {
-    height: 50vmin;
-  }
-}
-.date{ 
-  border: 0.5px solid rgb(190, 186, 186);
-  padding: 0.9vmin;
-  border-radius:0.5vmin;
-}
-.card{
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    .col-md-4 {
+        margin-top: 2vmin;
+    }
+    .col-md-4 .card-body img {
+        height: 60vmin;
+    }
+    .col-md-3 {
+        margin-top: 2vmin;
+    }
+    .col-md-3 .card-body img {
+        height: 50vmin;
+    }
 }
 
-.gap{
-  padding-top:12vmin;
+.date {
+    border: 0.5px solid rgb(190, 186, 186);
+    padding: 0.9vmin;
+    border-radius: 0.5vmin;
 }
 
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.gap {
+    padding-top: 12vmin;
+    padding-bottom: 12vmin;
+}

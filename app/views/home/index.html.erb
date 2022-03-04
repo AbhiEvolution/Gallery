@@ -18,7 +18,10 @@
                   <% end %>
                 <%end%>
               </div>
-              <div class="card-footer text-center"><%= album.title %></div>
+              <div class="card-footer">
+                <strong>Title:</strong>
+                <%= album.title %>
+              </div>
               <div class="card-footer">
                 <strong>Tags:</strong>
                 <%=album.all_tags %>
