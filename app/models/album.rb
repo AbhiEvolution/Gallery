@@ -6,6 +6,7 @@ class Album < ApplicationRecord
   has_many :tags, through: :taggings
   validates :cover_photo, :presence => true
   validates :photos, :presence => true
+  has_many :likes, dependent: :destroy
   validates :title, :length => {
                       :minimum => 3,
                       :maximum => 10,
