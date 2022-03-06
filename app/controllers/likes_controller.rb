@@ -8,7 +8,7 @@ class LikesController < ApplicationController
     else
       @album.likes.create(user_id: current_user.id)
     end
-    redirect_to album_path(@album)
+    redirect_to all_albums_path(@album)
   end
 
   def already_liked?
@@ -21,7 +21,7 @@ class LikesController < ApplicationController
     else
       @like.destroy
     end
-    redirect_to album_path(@album)
+    redirect_to all_albums_path(@album)
   end
 
   def find_like

@@ -87,3 +87,7 @@ i {
     padding-top: 12vmin;
     padding-bottom: 12vmin;
 }
+
+.pl {
+    float: right;
+}
