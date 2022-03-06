@@ -1,35 +1,44 @@
-<h1>All Album</h1>
+<h1>All Published Albums Of all Users are <%=@album%></h1>
 <div class="row">
   <% @user.each do |user| %>
     <% @albums.each do |album| %>
       <%if user.id == album.user_id %>
-      <div class="col-md-4">
-        <div class="card">
-          <div class="card-header">
-            <strong>Name:</strong>
-            <%=user.name%>
-          </div>
-          <div class="card-body">
-            <% if album.cover_photo.attached? %>
-              <%=link_to home_path(id: album.id) do%>
-                <%=image_tag(album.cover_photo,class: " img-fluid") %>
-              <%end%> <%end%>
-          </div>
-          <div class="card-footer">
-            <strong>Title:</strong>
-            <%=album.title%>
-          </div>
-          <div class="card-footer">
-            <strong>Description:</strong>
-            <%=album.description%>
-          </div>
-          <div class="card-footer">
-            <strong>Total Photos:</strong>
-            <%=album.photos.count%>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-header">
+              <strong>Name:</strong>
+              <%=user.name%>
+            </div>
+            <div class="card-body">
+              <% if album.cover_photo.attached? %>
+                <%=link_to home_path(id: album.id) do%>
+                  <%=image_tag(album.cover_photo,class: " img-fluid") %>
+                <%end%> <%end%>
+            </div>
+            <div class="card-footer">
+              <strong>Title:</strong>
+              <%=album.title%>
+            </div>
+            <div class="card-footer">
+              <strong>Description:</strong>
+              <%=album.description%>
+            </div>
+            <div class="card-footer">
+              <strong>Total Photos:</strong>
+              <%=album.photos.count%>
+            </div>
+            <div class="card-footer">
+              <% pre_like = album.likes.find { |like| like.user_id == current_user.id} %>
+              <% if pre_like %>
+                <%= button_to 'Unlike', album_like_path(album, pre_like), method: :delete %>
+              <% else %>
+                <%= button_to 'Like', album_likes_path(album), method: :album %>
+              <% end %>
+              <p><%= album.likes.count %> <%= (album.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+            </div>
           </div>
         </div>
-      </div>
+      <%end%>
     <%end%>
-  <%end%>
   <%end%>
 </div>

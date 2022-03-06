@@ -23,6 +23,14 @@
               <div  class="fas fa-images"></div>
               All Album 
             <% end %>
+            <%= link_to published_album_path, class: "nav-link #{'active fw-bold' if current_page?(published_album_path)}" do %>
+              <div  class="fas fa-images"></div>
+              Published Album
+            <% end %>
+            <%= link_to draft_album_path, class: "nav-link #{'active fw-bold' if current_page?(draft_album_path)}" do %>
+              <div  class="fas fa-images"></div>
+              Draft Album
+            <% end %>
           <%end%>
         </ul>
         <ul class="navbar-nav ms-auto">
@@ -52,10 +60,10 @@
     </div>
   </nav>
   <div class="container-fluid alt">
-  <% if notice %>
-    <p class="alert alert-success alert-dismissible fade show" role="alert"><%= notice %></p>
-  <% end %> <% if alert %>
-    <p class="alert alert-danger alert-dismissible fade show" role="alert"><%= alert %></p>
-  <% end %>
+    <% if notice %>
+      <p class="alert alert-success alert-dismissible fade show" role="alert"><%= notice %></p>
+    <% end %> <% if alert %>
+      <p class="alert alert-danger alert-dismissible fade show" role="alert"><%= alert %></p>
+    <% end %>
   </div>
 </div>

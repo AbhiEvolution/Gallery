@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_04_190558) do
+ActiveRecord::Schema.define(version: 2022_03_05_160231) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -49,6 +49,20 @@ ActiveRecord::Schema.define(version: 2022_03_04_190558) do
     t.integer "user_id"
   end
 
+  create_table "likes", force: :cascade do |t|
+    t.integer "album_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["album_id"], name: "index_likes_on_album_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "photos", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "taggings", force: :cascade do |t|
     t.integer "album_id", null: false
     t.integer "tag_id", null: false
@@ -79,6 +93,8 @@ ActiveRecord::Schema.define(version: 2022_03_04_190558) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "likes", "albums"
+  add_foreign_key "likes", "users"
   add_foreign_key "taggings", "albums"
   add_foreign_key "taggings", "tags"
 end

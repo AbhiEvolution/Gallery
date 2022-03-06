@@ -1,13 +1,25 @@
 class AlbumsController < ApplicationController
   before_action :authenticate_user!
 
-  def all_albums
-    @albums = Album.where(published: true)
-    @user=User.all
-  end
-
   def index
     @albums = current_user.albums
+    @album = current_user.albums.count
+  end
+
+  def all_albums
+    @albums = Album.where(published: true)
+    @album = Album.where(published: true).count
+    @user = User.all
+  end
+
+  def draft_album
+    @albums = current_user.albums.where(published: false)
+    @album_draft = current_user.albums.where(published: false).count
+  end
+
+  def published_album
+    @albums = current_user.albums.where(published: true)
+    @album = current_user.albums.where(published: true).count
   end
 
   def show
