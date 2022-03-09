@@ -2,33 +2,51 @@
 <div class="row">
   <% @albums.each do |album| %>
     <div class="col-md-4">
-        <div class="card">
-            <div class="card-header">
-              <%= link_to album_path(album),method: :delete, data: { confirm: "Are you sure?" } do   %>
-                <i class="fas fa-times right"></i>
-              <%end %>
-              <%= link_to edit_album_path(album)do   %>
-                <i class="fas fa-edit green"></i>
-              <%end %>
-            </div>
-          <div class="card-body">
-            <% if album.cover_photo.attached? %>
-           <%= link_to  home_path(id: album.id),class:"link" do%>
+      <div class="card">
+        <div class="card-header">
+          <%= link_to album_path(album),method: :delete, data: { confirm: "Are you sure?" } do   %>
+            <i class="fas fa-times right"></i>
+          <%end %>
+          <%= link_to edit_album_path(album)do   %>
+            <i class="fas fa-edit green"></i>
+          <%end %>
+        </div>
+        <div class="card-body">
+          <% if album.cover_photo.attached? %>
+            <%= link_to  home_path(id: album.id),class:"link" do%>
               <%=image_tag(album.cover_photo,class: "card-top-img img-fluid") %>
             <%end%> <%end%>
         </div>
-        <div class="card-footer">
-          <strong>Title:</strong>
-          <%=album.title%>
+        <div class="card-footer text-center">
+          <a data-bs-toggle="collapse" href="#album" role="button" aria-expanded="false" ><i class="fa fa-arrow-circle-down" style="font-size:23px"></i></a>
         </div>
-        <div class="card-footer">
-          <strong>Description:</strong>
-          <%=album.description%>
-        </div>
-        <div class="card-footer">
-          <strong>Total Photos:</strong>
-          <%=album.photos.count%>
-        </div>
+        <section class="collapse multi-collapse" id="album">
+          <div class="card-footer">
+            <span>
+              <strong>Title:</strong>
+              <%=album.title%>
+            </span>
+            <span class="pl">
+              <strong>Description:</strong>
+              <%=album.description%>
+            </span>
+          </div>
+          <div class="card-footer">
+            <span>
+              <strong>Tags:</strong>
+              <%=album.all_tags %>
+            </span>
+            <span class="pl">
+              <strong>Total Photos:</strong>
+              <%=album.photos.count%>
+            </span>
+          </div>
+          <div class="card-footer">
+            <span>
+              <%= album.likes.count %> <%= (album.likes.count) == 1 ? 'Like' : 'Likes'%>
+            </span>
+          </div>
+        </section>
       </div>
     </div>
   <%end%>
