@@ -7,27 +7,40 @@
         <%=image_tag(@album.cover_photo,class: "card-top-img img-fluid") %>
       <%end%>
     </div>
-    <div class="card-footer">
-      <strong>Title:</strong>
-      <%=@album.title%>
+    <div class="card-footer text-center">
+      <a data-bs-toggle="collapse" href="#album" role="button" aria-expanded="false" ><i class="fa fa-arrow-circle-down" style="font-size:23px"></i></a>
     </div>
-    <div class="card-footer">
-      <strong>Description:</strong>
-      <%=@album.description%>
-    </div>
-    <div class="card-footer">
-      <strong>Tag:</strong>
-      <%=@album.all_tags%>
-    </div>
+    <section class="collapse multi-collapse" id="album">
+      <div class="card-footer">
+        <span>
+          <strong>Title:</strong>
+          <%=@album.title%>
+        </span>
+        <span class="pl">
+          <strong>Description:</strong>
+          <%=@album.description%>
+        </span>
+      </div>
+      <div class="card-footer">
+        <span>
+          <strong>Tags:</strong>
+          <%=@album.all_tags %>
+        </span>
+        <span class="pl">
+          <strong>Total Photos:</strong>
+          <%=@album.photos.count%>
+        </span>
+      </div>
+    </section>
   </div>
 </div>
 <%=render 'photos_show'%>
 <div class="text-center my-4">
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Add Photos
-</button>
- <span class="mx-3"><%= link_to "Back", root_path,class: "btn btn-secondary"%></span>
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Add Photos
+  </button>
+  <span class="mx-3"><%= link_to "Back", root_path,class: "btn btn-secondary"%></span>
 </div>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -46,7 +59,7 @@
           <% end %>
           <div>
             <%=form.label :photos%>
-            <%=form.file_field:photos,class:'form-control',:multiple => true%>
+            <%=form.file_field:photos,class:'form-control',:multiple => true ,:required => true%>
           </div>
           <br />
         </div>
@@ -58,4 +71,3 @@
     </div>
   </div>
 </div>
-

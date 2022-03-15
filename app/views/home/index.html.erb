@@ -18,18 +18,36 @@
                   <% end %>
                 <%end%>
               </div>
-              <div class="card-footer">
-                <strong>Title:</strong>
-                <%= album.title %>
+              <div class="card-footer text-center">
+                <a data-bs-toggle="collapse" href="#album" role="button" aria-expanded="false" ><i class="fa fa-arrow-circle-down" style="font-size:23px"></i></a>
               </div>
-              <div class="card-footer">
-                <strong>Tags:</strong>
-                <%=album.all_tags %>
-              </div>
-              <div class="card-footer">
-                <strong>Total Photos:</strong>
-                <%=album.photos.count%>
-              </div>
+              <section class="collapse multi-collapse" id="album">
+                <div class="card-footer">
+                  <span>
+                    <strong>Title:</strong>
+                    <%=album.title%>
+                  </span>
+                  <span class="pl">
+                    <strong>Description:</strong>
+                    <%=album.description%>
+                  </span>
+                </div>
+                <div class="card-footer">
+                  <span>
+                    <strong>Tags:</strong>
+                    <%=album.all_tags %>
+                  </span>
+                  <span class="pl">
+                    <strong>Total Photos:</strong>
+                    <%=album.photos.count%>
+                  </span>
+                </div>
+                <div class="card-footer">
+                  <span>
+                    <%= album.likes.count %> <%= (album.likes.count) == 1 ? 'Like' : 'Likes'%>
+                  </span>
+                </div>
+              </section>
             </div>
           </div>
         <% end %>

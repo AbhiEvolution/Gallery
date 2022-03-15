@@ -1,11 +1,9 @@
 class HomeController < ApplicationController
   def index
-    if user_signed_in?
-      redirect_to albums_path
-    end
+    redirect_to albums_path if user_signed_in?
     @q = Album.where(published: true).ransack(params[:q])
     @albums = @q.result.includes(:tags)
-    @user=User.all
+    @user = User.all
   end
 
   def search

@@ -1,4 +1,4 @@
-<h1>All Albums of <%=current_user.name%> are <%=@album%></h1>
+<h1>All Draft Album of <%=current_user.name%> are <%=@album_draft%></h1>
 <div class="row">
   <% @albums.each do |album| %>
     <div class="col-md-4">
@@ -13,7 +13,7 @@
         </div>
         <div class="card-body">
           <% if album.cover_photo.attached? %>
-            <%= link_to album,class:"link" do%>
+            <%= link_to  home_path(id: album.id),class:"link" do%>
               <%=image_tag(album.cover_photo,class: "card-top-img img-fluid") %>
             <%end%> <%end%>
         </div>

@@ -1,35 +1,61 @@
-<h1>All Album</h1>
+<h1>All Published Albums Of all Users are <%=@album%></h1>
 <div class="row">
   <% @user.each do |user| %>
     <% @albums.each do |album| %>
       <%if user.id == album.user_id %>
-      <div class="col-md-4">
-        <div class="card">
-          <div class="card-header">
-            <strong>Name:</strong>
-            <%=user.name%>
-          </div>
-          <div class="card-body">
-            <% if album.cover_photo.attached? %>
-              <%=link_to home_path(id: album.id) do%>
-                <%=image_tag(album.cover_photo,class: " img-fluid") %>
-              <%end%> <%end%>
-          </div>
-          <div class="card-footer">
-            <strong>Title:</strong>
-            <%=album.title%>
-          </div>
-          <div class="card-footer">
-            <strong>Description:</strong>
-            <%=album.description%>
-          </div>
-          <div class="card-footer">
-            <strong>Total Photos:</strong>
-            <%=album.photos.count%>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-header">
+              <strong>Name:</strong>
+              <%=user.name%>
+            </div>
+            <div class="card-body">
+              <% if album.cover_photo.attached? %>
+                <%=link_to home_path(id: album.id) do%>
+                  <%=image_tag(album.cover_photo,class: " img-fluid") %>
+                <%end%> <%end%>
+            </div>
+            <div class="card-footer text-center">
+            <a data-bs-toggle="collapse" href="#{album.id}" data-toggle="collapse"role="button" aria-expanded="false" ><i class="fa fa-arrow-circle-down" style="font-size:23px"></i></a>
+            </div>
+            <section class="collapse multi-collapse" id="#{album.id}">
+              <div class="card-footer">
+                <span>
+                  <strong>Title:</strong>
+                  <%=album.title%>
+                </span>a
+                <span class="pl">
+                  <strong>Description:</strong>
+                  <%=album.description%>
+                </span>
+              </div>
+              <div class="card-footer">
+                <span>
+                  <strong>Tags:</strong>
+                  <%=album.all_tags %>
+                </span>
+                <span class="pl">
+                  <strong>Total Photos:</strong>
+                  <%=album.photos.count%>
+                </span>
+              </div>
+              <div class="card-footer">
+                <span>
+                  <%= album.likes.count %> <%= (album.likes.count) == 1 ? 'Like' : 'Likes'%>
+                </span>
+                <span class="pl">
+                  <% pre_like = album.likes.find { |like| like.user_id == current_user.id} %>
+                  <% if pre_like %>
+                    <%= button_to 'Unlike', album_like_path(album, pre_like), method: :delete %>
+                  <% else %>
+                    <%= button_to 'Like', album_likes_path(album), method: :album %>
+                  <% end %>
+                </span>
+              </div>
+            </section>
           </div>
         </div>
-      </div>
+      <%end%>
     <%end%>
-  <%end%>
   <%end%>
 </div>
