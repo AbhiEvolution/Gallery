@@ -1,4 +1,4 @@
-<div class="container-fluid bg-dark shadow-lg p-3 mb-5 bg-body rounded fixed-top bg">
+<div class="container-fluid bg-dark shadow-lg p-3 mb-5 bg-body rounded fixed-top bg animate">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="/">
@@ -46,7 +46,6 @@
                   <b>Account settings</b>
                 <% end %>
                 <%= link_to destroy_user_session_path, method: :delete, class: "dropdown-item" do %>
-                  <div class="fa fa-sign-out-alt"></div>
                   <b>Sign out</b>
                 <% end %>
               </ul>

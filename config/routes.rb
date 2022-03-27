@@ -1,5 +1,9 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
   root 'home#index'
   get 'all_albums', to: 'albums#all_albums'
   get 'draft_album', to: 'albums#draft_album'

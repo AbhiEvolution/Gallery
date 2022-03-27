@@ -16,9 +16,9 @@
                 <%end%> <%end%>
             </div>
             <div class="card-footer text-center">
-            <a data-bs-toggle="collapse" href="#{album.id}" data-toggle="collapse"role="button" aria-expanded="false" ><i class="fa fa-arrow-circle-down" style="font-size:23px"></i></a>
+            <a data-bs-toggle="collapse" href="#album-<%= album.id %>"  data-toggle="collapse"role="button" aria-expanded="false" ><i class="fa fa-arrow-circle-down" style="font-size:23px"></i></a>
             </div>
-            <section class="collapse multi-collapse" id="#{album.id}">
+            <section class="collapse multi-collapse" id="album-<%= album.id%>">
               <div class="card-footer">
                 <span>
                   <strong>Title:</strong>

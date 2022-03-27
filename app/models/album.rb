@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Album < ApplicationRecord
   has_one_attached :cover_photo
   has_many_attached :photos

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AlbumsController < ApplicationController
   before_action :authenticate_user!
 
@@ -70,6 +72,6 @@ class AlbumsController < ApplicationController
   private
 
   def album_params
-    params.require(:album).permit(:title, :description, :published, :cover_photo, :all_tags, :photos => [])
+    params.require(:album).permit(:title, :description, :published, :cover_photo, :all_tags, photos: [])
   end
 end

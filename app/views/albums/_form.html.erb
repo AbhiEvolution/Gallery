@@ -28,11 +28,15 @@
   <%=form.file_field:photos,class:'form-control',:multiple => true%>
 </div>
 <br />
+  <% if album.published %>
+   <%form.hidden_field(:published)%>
+    <% else %>
 <div>
   <%=form.label :published%> 
   <%=form.check_box :published%>
 </div>
 <br />
+<%end%>
 <div><%=form.submit%></div>
 
 <%end%>
