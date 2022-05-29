@@ -39,19 +39,6 @@
                   <%=album.photos.count%>
                 </span>
               </div>
-              <div class="card-footer">
-                <span>
-                  <%= album.likes.count %> <%= (album.likes.count) == 1 ? 'Like' : 'Likes'%>
-                </span>
-                <span class="pl">
-                  <% pre_like = album.likes.find { |like| like.user_id == current_user.id} %>
-                  <% if pre_like %>
-                    <%= button_to 'Unlike', album_like_path(album, pre_like), method: :delete %>
-                  <% else %>
-                    <%= button_to 'Like', album_likes_path(album), method: :album %>
-                  <% end %>
-                </span>
-              </div>
             </section>
           </div>
         </div>

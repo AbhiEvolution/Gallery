@@ -20,7 +20,7 @@
         <div class="card-footer text-center">
           <a data-bs-toggle="collapse" href="#album-<%= album.id %>"  role="button" aria-expanded="false" ><i class="fa fa-arrow-circle-down" style="font-size:23px"></i></a>
         </div>
-        <section class="collapse multi-collapse" id="album-<%= album.id%>">>
+        <section class="collapse multi-collapse" id="album-<%= album.id%>">
           <div class="card-footer">
             <span>
               <strong>Title:</strong>
@@ -39,11 +39,6 @@
             <span class="pl">
               <strong>Total Photos:</strong>
               <%=album.photos.count%>
-            </span>
-          </div>
-          <div class="card-footer">
-            <span>
-              <%= album.likes.count %> <%= (album.likes.count) == 1 ? 'Like' : 'Likes'%>
             </span>
           </div>
         </section>
